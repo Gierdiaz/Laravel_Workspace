@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id('id');
-            $table->float('value', 8, 2);
-            $table->dateTime('payment_date');
-            $table->integer('user_id')->unsigned();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('type'); // Pix, Boleto, Cartão
+            $table->boolean('paid'); // 0 ou 1
+            $table->decimal('value',10,2);
+            $table->dateTime('payment_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 
