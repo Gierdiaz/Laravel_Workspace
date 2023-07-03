@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\Technology_position\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,11 @@ Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.st
 //Middawares work on the routes
 Route::get('/log', [LoginController::class, 'index'])->middleware('my_auth');
 Route::get('/home_page', [HomePageController::class, 'login']);
+
+
+//Technology Company
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employee.index');
+Route::get('/employees', [EmployeeController::class, 'create'])->name('employees.create');
+Route::post('/employees/{employee}', [EmployeeController::class, 'store'])->name('employees.store');
+
+

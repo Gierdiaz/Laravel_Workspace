@@ -12,9 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('positions', function (Blueprint $table) {
-            $table->id();
-            $table->string('description');
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('order')->nullable();            
+			$table->integer('table_id')->nullable();
+            $table->unsignedBigInteger('employee_id');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
