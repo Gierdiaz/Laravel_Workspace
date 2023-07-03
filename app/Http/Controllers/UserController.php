@@ -20,7 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-         $user = $this->user->all();
+        $user = $this->user->all();
+
+        return view('users', ['users' => $user]);
 
     }
 
