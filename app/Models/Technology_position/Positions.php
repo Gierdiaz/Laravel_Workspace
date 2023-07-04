@@ -16,7 +16,7 @@ class Positions extends Model
 
     public static function ListOfPostion($table) {
 
-        $position = DB::table('positions', 'employees.id', '=', 'positions.employee_id')
+        $position = DB::table('positions as positions_tech', 'positions.table_id', '=', 'positions_tech.id')
             ->select('positions.*')
             ->when($table, function ($query, $table) {
                 return $query->where('positions', $table);

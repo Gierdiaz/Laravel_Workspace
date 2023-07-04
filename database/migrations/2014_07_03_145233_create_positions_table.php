@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('order')->nullable();            
 			$table->integer('table_id')->nullable();
-            $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

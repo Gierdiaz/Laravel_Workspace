@@ -5,13 +5,15 @@
         <title>Employee</title>
     </head>
     <body>
-        <form action="{{ route('employee.index') }}" method="post">
+        <form action="{{ route('employees.index') }}" method="post">
             @csrf
-            @foreach ($user as $users)
-            <select name="" id="">     
-                <option value=""> {{ $users->position->name }}</option>
+           
+            <select name="" id="">    
+                @foreach($employees as $employee) 
+                <option value=""> {{ $employee->name }}</option>
+                @endforeach
             </select>
-            @endforeach
+            
         </form>
     </body>
 </html>
