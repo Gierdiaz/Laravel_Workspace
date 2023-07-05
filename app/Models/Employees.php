@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Collaborators;
+namespace App\Models;
 
 use App\Models\Technology_position\Positions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +16,7 @@ class Employees extends Model
 
     public static function ListEmployee() {
         $employee = DB::table('employees', 'users.id', '=', 'employees.user_id')
-            ->join('positions', 'employees.position_id', '=', 'positions.id')
+            ->join('employees', 'positions.id', '=', 'employees.position_id')
             ->select('employees*.', 'positions.name as position_name')
             ->get();
 

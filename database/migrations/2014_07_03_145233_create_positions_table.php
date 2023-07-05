@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('order')->nullable();            
 			$table->integer('table_id')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 

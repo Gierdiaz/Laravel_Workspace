@@ -20,8 +20,8 @@ class EmployeesFactory extends Factory
     {
         return [
             'user_id'       => User::all()->random()->id,
-            'position_id'   => Positions::all()->random()->id,
-            'address'       => $this->faker()->random(),
+            //'position_id'   => Positions::all()->random()->id,
+            'address'       => fake()->address
         ];
     }
 }

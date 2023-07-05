@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(20)->create();
         \App\Models\Invoices::factory(20)->create();
+        \App\Models\Employees::factory(20)->create();
 
        $this->call(PositionsSeeder::class);
 
