@@ -21,7 +21,7 @@ class EmployeesFactory extends Factory
     {
         return [
             'user_id'       => User::all()->random()->id,
-            'position_id'   => DB::table('positions'),
+            //'position_id'   => DB::table('positions'),
             'address'       => fake()->address
         ];
     }

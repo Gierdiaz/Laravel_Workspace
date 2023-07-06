@@ -14,6 +14,12 @@ class InvoiceController extends Controller
 
     use HttpResponses;
 
+    public function __construct(){
+        //$this->middleware('auth:sanctum')->only(['store', 'update']);
+
+        $this->middleware(['auth:sanctum', 'ability:test-index'])->only(['store', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      */

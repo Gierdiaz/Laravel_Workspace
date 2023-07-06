@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\InvoiceController;
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ use App\Http\Controllers\Api\V1\AuthController;
 Route::prefix('v1')->group(function(){
     //users routes
     Route::get('/users',            [UserController::class, 'index']);
-    Route::get('/users/{user}',     [UserController::class, 'show']);
+    Route::get('/users/{user}',     [UserController::class, 'show'])->middleware('ability:test-show'); //auth with the method ability;
     Route::get('/login',            [AuthController::class, 'login']);
     
     //invoices routes
@@ -36,6 +37,8 @@ Route::prefix('v1')->group(function(){
     Route::delete('/invoices/{invoice}', [InvoiceController::class, 'destroy']);
 
     //login routes
-    Route::get('/login', [AuthController::class, 'login']);
-    Route::get('/test', [TestController::class, 'index']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/test', [TestController::class, 'index'])->middleware('auth:sanctum'); //precisa ter um token válido.
+
+    Route::apiResource('/invoices', InvoiceController::class)->middleware('auth:sanctum'); //método mágico dentro da controller invoice
 });
