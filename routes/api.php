@@ -29,6 +29,7 @@ Route::prefix('v1')->group(function(){
     Route::get('/users/{user}',     [UserController::class, 'show'])->middleware('ability:test-show'); //auth with the method ability;
     Route::get('/login',            [AuthController::class, 'login']);
     
+    
     //invoices routes
     Route::get('/invoices',              [InvoiceController::class, 'index']);
     Route::get('/invoices/{invoice}',    [InvoiceController::class, 'show']);
@@ -38,6 +39,7 @@ Route::prefix('v1')->group(function(){
 
     //login routes
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
     Route::get('/test', [TestController::class, 'index'])->middleware('auth:sanctum'); //precisa ter um token válido.
 
     Route::apiResource('/invoices', InvoiceController::class)->middleware('auth:sanctum'); //método mágico dentro da controller invoice
