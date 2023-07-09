@@ -9,6 +9,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Collaborators\EmployeeController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,13 @@ Route::get('/home_page', [HomePageController::class, 'login']);
 
 //Technology Company
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+
+
+
+//Routes for validate
+Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
 
 
 
