@@ -15,15 +15,19 @@ class RegisterController extends Controller
 
     public function store(Request $request) {
 
-        //Two ways to work with validation. Always with the method store.
-
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required|confirmed|min:5'
+        ], [ 
+            'name.required'      => 'Nome obrigatório',
+            'email.required'     => 'E-mail obrigatório',
+            'email.email'        => 'E-mail precisa ser válido',
+            'password.required'  => 'Senha obrigatório',
+            'password.confirmed' => 'Confirme sua senha' 
         ]);
 
-        dd($request)->all();
+/*         dd($request)->all();
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -33,6 +37,6 @@ class RegisterController extends Controller
 
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
-        }
+        } */
     }
 }

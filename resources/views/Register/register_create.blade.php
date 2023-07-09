@@ -20,10 +20,24 @@
 <h1>Register</h1>
 <form action="{{ route('register.store') }}" method="post">
     @csrf
+    <label for="">Name</label>
+    <br>
     <input type="text" name="name" value="{{ old('name') }}"> {{-- validator withInput--}}
-    <input type="text" name="email" value="allison@hotmail.com">
-    <input type="text" name="password" value="123456">
+    <br>
+    <label for="">E-mail</label>
+    <br>
+    <input type="text" name="email" value="{{ old('email') }}">
+    <br>
+    <label for="">Password</label>
+    <br>
+    <input type="text" name="password" value="{{ old('password') }}">
+    <br>
+    <label for="">Confirm password</label>
+    <br>
+    <input type="text" name="password_confirmation" value="{{ old('password') }}">
+    <br>
     <button type="submit">Register</button>
+    
 </form> 
 @endsection
 
